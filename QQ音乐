@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QQ音乐</title>
+    <style>
+      /*设置"QQ音乐"图片边距*/
+      h2 img {
+        vertical-align: middle; /*居中垂直对齐*/
+        margin-left: 200px; /*左外边距为200px*/
+        margin-top: 10px; /*上外边距10px*/
+        margin-bottom: 10px; /*下外边距10px*/
+      }
+      /*图片右侧文字样式设置*/
+      .a2 {
+        font-size: 20px; /*字体大小20px*/
+        margin-left: 30px; /*左外边距30px*/
+      }
+      /*设置边框*/
+      .line {
+        border: 1px solid; /*边框设置为1px*/
+        opacity: 0.1; /*透明度设置为0.1*/
+      }
+      /*导航栏设置*/
+      ul.nav {
+        margin-left: 350px;
+        list-style-type: none; /*设置列表前无标记*/
+        height: 3rem;
+      }
+      .nav li {
+        float: left;
+      }
+      .nav li a:link,
+      .nav li a:visited {
+        display: block; /*块级盒子*/
+        width: 120px;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 3rem; /*文本每行之间的高设置为3rem*/
+        text-decoration: none; /*取消文本装饰*/
+        color: black;
+      }
+      /*设置导航栏下方页面样式*/
+      .content {
+        height: auto;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.082);
+      }
+      /*导航栏下方布局*/
+      .playlist {
+        display: grid; /*采用网格布局*/
+        grid-template-columns: 200px 200px 200px 200px 200px;
+        gap: 20px; /*行列间距都是20px*/
+      }
+
+      /*网格设置*/
+      .music {
+        margin-left: 220px;
+        width: 100%;
+        height: 300px;
+        border: 15px;
+      }
+      /*歌曲图标设置*/
+      .cover {  
+        position: relative;  /*相对定位*/
+        display: inline-block;  /*内联盒子*/  
+      }  
+  
+      /*背景图片设置*/
+      .picture {  
+        width: 200px;  
+        height: 200px;  
+        display: block;  
+      }  
+  
+      /*播放器图片设置*/
+      .play {  
+        position: absolute;  /*设置绝对位置*/
+        top: 50%;  
+        left: 50%;  
+        transform: translate(-50%, -50%); /*将播放器图片沿X、Y轴同时移动*/
+        text-align: center;  
+        display: none;  
+        opacity: 0.5;  
+        width: 100px;  
+        height: 100px; 
+      }  
+
+      /*设置将歌手和歌名链接*/
+      /*取消下划线*/
+      .title {
+        text-decoration: none;
+        height: 20%;
+      }
+      .author {
+        text-decoration: none;
+      }
+
+      /*通过伪类设置不同状态下链接样式*/
+      .title a:link {
+        /* 未访问的链接 */
+        color: red;
+      }
+      .title a:visited {
+        /* 已访问的链接 */
+        color: grey;
+      }
+      .title a:hover {
+        /* 鼠标移动到链接上 */
+        color: purple;
+      }
+      .title a:active {
+        /* 选定的链接(鼠标按下时) */
+        color: blue;
+      }
+
+      .author a:link {
+        /* 未访问的链接 */
+        color: black;
+      }
+      .author a:visited {
+        /* 已访问的链接 */
+        color: grey;
+      }
+      .author a:hover {
+        /* 鼠标移动到链接上 */
+        color: blue;
+      }
+      .author a:active {
+        /* 选定的链接(鼠标按下时) */
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      <img src="imgs\qqmusic.png" alt="QQ音乐" />
+      <label class="a2"
+        >千万正版音乐海量无损曲库新歌热歌天天畅听的高品质音乐平台！</label
+      >
+    </h2>
+    <div class="container">
+      <div class="page">
+        <p class="line"></p>
+        <ul class="nav">
+          <li><a href="#home page">首页</a></li>
+          <li><a href="#singer">歌手</a></li>
+          <li><a href="#sheet">歌单</a></li>
+          <li><a href="#area">地区</a></li>
+          <li><a href="#mine">我的</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="playlist">
+            <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper01.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">light</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Mike</a>
+                </div>
+                <div class="date">2024-9-28</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper02.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">bridge and river</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Alice</a>
+                </div>
+                <div class="date">2024-8-27</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper03.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">northen europe</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Jeff</a>
+                </div>
+                <div class="date">2024-7-26</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper04.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">island</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Jack</a>
+                </div>
+                <div class="date">2024-6-25</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper05.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">wooden houses</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Rose</a>
+                </div>
+                <div class="date">2024-5-24</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\1080\wallpaper06.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">stars in the sky</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Vector</a>
+                </div>
+                <div class="date">2024-4-23</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\a2.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">harvest</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Tom</a>
+                </div>
+                <div class="date">2024-3-22</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\portfolio5.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">Tall buildings</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Luyas</a>
+                </div>
+                <div class="date">2024-2-21</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\img_mountains_wide.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">mountain</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Mark</a>
+                </div>
+                <div class="date">2024-1-20</div>
+              </div>
+              <div class="music">
+                <a href="#" class="cover">
+                  <img src="images\a3.jpg" class="picture" />
+                  <img src="imgs\cover_play.png" class="play" />
+                </a>
+                <div>
+                  <a href="#" class="title">sunset glow</a>
+                </div>
+                <div>
+                  <a href="#" class="author">Jones</a>
+                </div>
+                <div class="date">2023-12-19</div>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        // 选择所有的.cover元素  
+    const covers = document.querySelectorAll(".cover");  
+  
+  // 为每个.cover元素添加mouseover和mouseout事件监听器  
+    covers.forEach(function(cover) {  
+        cover.addEventListener("mouseover", function () {  
+            this.querySelector(".play").style.display = "block";  
+        });  
+    
+        cover.addEventListener("mouseout", function () {  
+          this.querySelector(".play").style.display = "none";  
+      });  
+  });
+  </script>
+  </body>
+</html>
