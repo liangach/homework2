@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+    <style>
+      #Input {
+        background-image: url("images/searchicon.png");
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+
+      #MyTable {
+        border-collapse: collapse; /*边框合并2单一边框*/
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+      }
+      #MyTable th,
+      #MyTable td {
+        text-align: left;
+        padding: 12px;
+      }
+
+      #MyTable tr {
+        border-bottom: 1px solid #ddd; /*表格添加边框*/
+      }
+
+      #MyTable tr.header,
+      #MyTable tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="Input" placeholder="search companies..." />
+    <table id="MyTable">
+      <tr class="header">
+        <th style="width: 60%">Name</th>
+        <th style="width: 40%">Country</th>
+      </tr>
+      <tr>
+        <td onclick="sortTable(0)"><a href="#">Alfreds Futterkiste</a></td>
+        <td onclick="sortTable(1)"><a href="#">Germany</a></td>
+      </tr>
+      <tr>
+        <td onclick="sortTable(0)"><a href="#">Berglunds snabbkop</a></td>
+        <td onclick="sortTable(1)"><a href="#">Sweden</a></td>
+      </tr>
+      <tr>
+        <td onclick="sortTable(0)"><a href="#">Island Trading</a></td>
+        <td onclick="sortTable(1)"><a href="#">UK</a></td>
+      </tr>
+      <tr>
+        <td onclick="sortTable(0)"><a href="#">Koniglich Essen</a></td>
+        <td onclick="sortTable(1)"><a href="#">Germany</a></td>
+      </tr>
+    </table>
+
+    <script>
+      function search() {
+        let input = document.getElementById("Input");
+        let filter = input.value.toUpperCase();
+        let table = document.getElementById("MyTable");
+        let tr = table.querySelectorAll("tr");
+        // 循环表格每一行，查找匹配项
+        for (let i = 0; i < tr.length; i++) {
+          let td = tr[i].querySelectorAll("td")[0]; //获取第一列(companies' names)
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = ""; // to recover the display of elements
+            } else {
+              tr[i].style.display = "none"; // to hide elements
+            }
+          }
+        }
+      }
+      let input = document.getElementById("Input");
+      input.addEventListener("input", search);
+
+      function sortTable(n) {
+        var table,
+          rows,
+          switching,
+          i,
+          x,
+          y,
+          shouldSwitch,
+          dir,
+          switchcount = 0;
+        table = document.getElementById("MyTable");
+        switching = true;
+        // 设置升序排列
+        dir = "asc";
+        /* 设置一个循环语句 */
+        while (switching) {
+          // 设置循环结束标记
+          switching = false;
+          rows = table.rows;
+          /* 循环列表，从第二行开始 */
+          for (i = 1; i < rows.length - 1; i++) {
+            // 设置元素是否调换位置
+            shouldSwitch = false;
+            /* 获取要比较的元素,
+      one from current row and one from the next: */
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /* 判断是否将下一个元素与当前元素进行切换 (asc 或 desc):  */
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                // 设置调换元素标记，并结束当前循环
+                shouldSwitch = true;
+                break;
+              }
+            } else if (dir == "desc") {
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                // 设置调换元素标记，并结束当前循环
+                shouldSwitch = true;
+                break;
+              }
+            }
+          }
+          if (shouldSwitch) {
+            /* 如果元素调换位置设置为 true，则进行对调操作 */
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            // 每次对调完成时，将 switchcount 增加 1
+            switchcount++;
+          } else {
+            /* 如果完成所有元素的排序且 direction 设置为 "asc",这时就将 direction 设置为 "desc" 并再次执行循环 */
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
